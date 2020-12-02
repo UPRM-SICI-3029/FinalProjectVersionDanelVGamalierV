@@ -75,6 +75,12 @@ namespace FinalProjectVersion2
             try
             {
                 newSport = txtSportCategory.Text;
+                int n = dgvSportsCategories.Rows.Add();
+                if (newSport == "")
+                {
+                    newSport = "Placeholder";
+                    MessageBox.Show("User has input a blank space, a placeholder has been placed to update later.");
+                }
                 finalLetterPosition = newSport.Length;
                 for (startingLetterPosition = 0; startingLetterPosition < finalLetterPosition; startingLetterPosition++)
                 {
@@ -83,21 +89,11 @@ namespace FinalProjectVersion2
                     else
                         replacement += newSport.Substring(startingLetterPosition, 1);
                 }
-
-                if (replacement == "")
-                {
-                    MessageBox.Show("User has input a blank space, please fill out the box.");
-                    replacement = "";
-                }
-                else
-                {
-                    int n = dgvSportsCategories.Rows.Add();
-                    dgvSportsCategories[0, selectedRow].Value = replacement;
-                    replacement = "";
-                    SaveDGV();
-                    CreateDGV();
-                    ReturnAndClean();
-                }
+                dgvSportsCategories.Rows[n].Cells[0].Value = replacement;
+                replacement = "";
+                SaveDGV();
+                CreateDGV();
+                ReturnAndClean();
             }
             catch (Exception ex)
             {
@@ -117,7 +113,7 @@ namespace FinalProjectVersion2
             try
             {
                 newSport = txtSportCategory.Text;
-                
+
                 finalLetterPosition = newSport.Length;
                 for (startingLetterPosition = 0; startingLetterPosition < finalLetterPosition; startingLetterPosition++)
                 {
@@ -128,17 +124,15 @@ namespace FinalProjectVersion2
                 }
                 if (replacement == "")
                 {
-                    MessageBox.Show("User has input a blank space, please fill out the box.");
-                    replacement = "";
+                    replacement = "Placeholder";
+                    MessageBox.Show("User has input a blank space, a placeholder has been placed to update later.");
                 }
-                else
-                {
-                    dgvSportsCategories[0, selectedRow].Value = replacement;
-                    replacement = "";
-                    SaveDGV();
-                    CreateDGV();
-                    ReturnAndClean();
-                }
+
+                dgvSportsCategories[0, selectedRow].Value = replacement;
+                replacement = "";
+                SaveDGV();
+                CreateDGV();
+                ReturnAndClean();
             }
             catch (Exception ex)
             {
