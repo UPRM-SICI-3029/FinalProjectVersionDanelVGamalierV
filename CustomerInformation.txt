@@ -1,0 +1,3 @@
+John,Smith,8001234321,Ponce,j.smith@gmail.com
+Victor,Rodríguez,7877777476,San Juan,vic.rod@yahoo.com
+Jane,Doe,6778124352,Russia,j.doe@gmail.com
